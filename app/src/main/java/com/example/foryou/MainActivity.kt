@@ -36,19 +36,49 @@ class MainActivity : AppCompatActivity() {
 
 
     fun initAdapter(){
-        adapter= Adapter(this::childPlusOnCLick,this::childMinusOnCLick)
+        adapter= Adapter(this::childPlusOnCLick,this::childMinusOnCLick,this::parentPlusOnCLick,this::parentMinusOnCLick)
         binding.rv.adapter=adapter
         binding.rv.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
 
 
     }
 
+    private fun parentMinusOnCLick(position:Int,model:MyModel) {
+
+        viewModel.minusParent(position,model)
+
+    }
+
+    private fun parentPlusOnCLick(position:Int,model:MyModel) {
+        if (viewModel.parentCount()<10) {
+  viewModel.plusParent(position,model)
+        }else{
+
+            Toast.makeText(this,"Превышен",Toast.LENGTH_SHORT).show()
+        }
+
+
+    }
+
     private fun childMinusOnCLick(position:Int,model:MyModel) {
+
         viewModel.minusChild(position,model)
+
+
     }
 
     private fun childPlusOnCLick(position:Int,model: MyModel) {
-       viewModel.plusChild(position,model)
+        if (viewModel.childCount()<10) {
+
+            viewModel.plusChild(position, model)
+        }else{
+
+            Toast.makeText(this,"Превышен",Toast.LENGTH_SHORT).show()
+        }
+
 
     }
+
+
+
 }

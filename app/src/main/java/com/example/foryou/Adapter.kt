@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foryou.databinding.DataItemBinding
 
-class Adapter(val childPlusOnCLick:(Int,MyModel)->Unit,val childMinusOnCLick:(Int,MyModel)->Unit):RecyclerView.Adapter<Adapter.MyViewHolder>() {
+class Adapter(val childPlusOnCLick:(Int,MyModel)->Unit,val childMinusOnCLick:(Int,MyModel)->Unit,val parentPlusOnCLick:(Int,MyModel)->Unit,val parentMinusOnCLick:(Int,MyModel)->Unit):RecyclerView.Adapter<Adapter.MyViewHolder>() {
 
 var list= mutableListOf<MyModel>()
 
@@ -52,7 +52,17 @@ set(value) {
         }
 
 
+        binding.parentPlusId.setOnClickListener {
+            parentPlusOnCLick(position,list[position])
 
+        }
+
+binding.parentMinusId.setOnClickListener {
+
+    parentMinusOnCLick(position,list[position])
+
+
+}
 
 
 
