@@ -30,7 +30,7 @@ var childCount=model.childCount
         childCount++
         val childModel=ChildModel(childCount,model.list.parent)
 
-        val models=MyModel(position,childModel,childCount,model.parentCount)
+        val models=MyModel(position+1,childModel,childCount,model.parentCount)
 
         list[position] = models
         listLiveData.value=list
@@ -43,7 +43,7 @@ if (childCount>=1) {
     childCount--
     val childModel = ChildModel(childCount, model.list.parent)
 
-    val models = MyModel(position, childModel,childCount,model.parentCount)
+    val models = MyModel(position+1, childModel,childCount,model.parentCount)
 
     list[position] = models
     listLiveData.value=list
@@ -62,7 +62,7 @@ if (childCount>=1) {
         parentCount++
         val childModel=ChildModel(model.list.child,parentCount)
 
-        val models=MyModel(position,childModel,model.childCount,parentCount)
+        val models=MyModel(position+1,childModel,model.childCount,parentCount)
 
         list[position] = models
         listLiveData.value=list
@@ -75,7 +75,7 @@ if (childCount>=1) {
             parentCount--
             val childModel = ChildModel( model.list.child,parentCount)
 
-            val models = MyModel(position, childModel,model.childCount,parentCount)
+            val models = MyModel(position+1, childModel,model.childCount,parentCount)
 
             list[position] = models
             listLiveData.value=list
